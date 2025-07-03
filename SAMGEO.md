@@ -10,3 +10,11 @@ Assuming that one already has necessary geospatial imaging, the modules necessar
 
 * install python 3.12 and (via pip or equivalent processes) the python modules segment-geospatial, opencv-python, supervision, groundingdino-py, osr, and gdal
 * if using windows, you may potentially need to download and install "gdal-3.10.2-cp312-cp312-win_amd64.whl" or the equivalent wheel for your system from https://github.com/cgohlke/geospatial-wheels/releases before installing gdal.
+
+### Running SAMGEO in jupyter notebooks
+
+* download and run flood_test.ipynb from the src folder of this github project
+
+### Running samgeo in python via command line
+
+* download flood.py from the src folder of this github project, and run "python flood.py" in your command line.
