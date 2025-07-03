@@ -5,17 +5,20 @@ image = 'HALM1_75_20240418T153559_20240418T153632_T19TDK_VIS.tif'
 
 sam = LangSAM()
 
-text_prompt = "rivers and lakes"
+text_prompt = "segment river in aerial view"
 
-sam.predict(image, text_prompt, box_threshold=0.24, text_threshold=0.24)
+for i in range(3):
+    title = "river_" + str(i)
+    tif_title = title + ".tif"
+    shp_title = title + "shp"
+    sam.predict(images[i], text_prompt, box_threshold=0.36, text_threshold=0.36, automatic=False)
 
-sam.show_anns(
-    cmap="Greys_r",
-    add_boxes=False,
-    title="Automatic Segmentation of Rivers",
-    blend=False,
-    automatic=False,
-    output='water.tif'
-)
+    sam.show_anns(
+        cmap="Greens",
+        add_boxes=False,
+        title="Segmentation of water",
+        blend=True,
+        output= tif_title
+    )
 
-sam.raster_to_vector("water.tif", "water.shp")
+    sam.raster_to_vector(tif_title, shp_title)
